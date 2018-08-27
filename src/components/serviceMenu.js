@@ -9,9 +9,6 @@ import Paper from '@material-ui/core/Paper';
 class ServiceMenu extends Component {
 
   render() {
-
-    console.log('props data is: ', this.props.data);
-
     return (
       <div className="ServiceMenu">
         <Paper>
@@ -23,7 +20,10 @@ class ServiceMenu extends Component {
                 <TableCell numeric>Fat (g)</TableCell>
                 <TableCell numeric>Carbs (g)</TableCell>
                 <TableCell numeric>Protein (g)</TableCell> */}
-                <TableCell numeric>foobar</TableCell>
+                <TableCell>Service Name</TableCell>
+                <TableCell>Mode</TableCell>
+                <TableCell>Operation</TableCell>
+                <TableCell>Line Statuses</TableCell>
             </TableRow>
             </TableHead>
             <TableBody>
@@ -33,6 +33,15 @@ class ServiceMenu extends Component {
                     <TableCell component="th" scope="row">
                     {row.name}
                     </TableCell>
+                    <TableCell component="th" scope="row">
+                    {row.modeName}
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                    {row.serviceTypes[0].name ? <span>day</span> : <span>night&day</span>}
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                    {row.lineStatuses[0].statusSeverity !==10 ? <span>Service Disruptions</span> : <span>{row.lineStatuses[0].statusSeverityDescription}</span>}
+                    </TableCell>                                                     
                     {/* <TableCell numeric>{row.calories}</TableCell>
                     <TableCell numeric>{row.fat}</TableCell>
                     <TableCell numeric>{row.carbs}</TableCell>

@@ -27,8 +27,7 @@ class Dashboard extends Component {
         }).catch(err=>{
             console.log(err)
         });
-    }    
-
+    }
 
   render() {
     return (
@@ -37,10 +36,7 @@ class Dashboard extends Component {
                 <img src={logo} className="App-logo" alt="logo" />
                 <h1 className="App-title">Moving London</h1>          
             </header>
-            <p className="App-intro">
-            Your number one location to get travel updates and get moving.
-            </p>
-
+            <h2>TFL Services</h2>
             <ServiceMenu data={this.state.data} />
 
         </Fragment>

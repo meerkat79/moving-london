@@ -36,7 +36,7 @@ class Dashboard extends Component {
                 <img src={logo} className="App-logo" alt="logo" />
                 <h1 className="App-title">Moving London</h1>          
             </header>
-            <h2>TFL Services</h2>
+            <h2>Services Noticeboard</h2>
             <ServiceMenu data={this.state.data} />
 
         </Fragment>

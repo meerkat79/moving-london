@@ -2,13 +2,16 @@ import React, { Component, Fragment } from 'react';
 import logo from '../map-icon-train.gif';
 import ServiceMenu from './serviceMenu';
 
+import Grid from '@material-ui/core/Grid';
+
 class Dashboard extends Component {
 
     constructor(props){
         super(props);
 
         this.state = {
-            data: []
+            data: [],
+            fetching: true
         }
     }
 
@@ -22,6 +25,7 @@ class Dashboard extends Component {
             else {
                 response.json().then( response => {
                     this.setState({data: response});
+                    this.setState({fetching: false});
                 })
             }
         }).catch(err=>{
@@ -32,12 +36,15 @@ class Dashboard extends Component {
   render() {
     return (
         <Fragment>
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <h1 className="App-title">Moving London</h1>          
-            </header>
-            <h2>Services Noticeboard</h2>
-            <ServiceMenu data={this.state.data} />
+            <Grid item xs={12}>
+                <header className="App-header">
+                    <img src={logo} className="App-logo" alt="logo" />
+                    <h1 className="App-title">Moving London</h1>          
+                </header>
+                <h2>Services Noticeboard</h2>
+
+                {this.state.fetching ? <Spinner />: <ServiceMenu data={this.state.data} />}
+            </Grid>
 
         </Fragment>
     );
